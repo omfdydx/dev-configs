@@ -17,7 +17,7 @@
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     signed = "!f() { \
-         git commit -Sm\"$1\"; \
+         git commit -S m\"$1\"; \
      }; f"
     # Find commits by source code
 
