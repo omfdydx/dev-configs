@@ -1,6 +1,8 @@
 # dev-configs
 Standard configs for devs ! 
 
-Rofi Configs
-Screen Configs
-Tmux Configs
+#### Tmux Configs
+
+#### Simple Useful Gitconfig & Aliases
+
+#### Simple Bash powerline 
