@@ -1,0 +1,33 @@
+#!/bin/bash
+set -e
+# zz-tmux-project run -s shutdown
+SESSION_NAME=project
+source $HOME/.bin/progre.sh
+
+# zz-tmux-project run -s all
+printf "\n\n\n"
+progress-bar 1
+printf "\n\n\n"
+
+#Create the session with the name
+tmux new-session -s $SESSION_NAME -n $SESSION_NAME -d 'cd ~;bash -i'
+#Rename the default pane
+tmux select-pane -T main
+
+# Create a Horizontal pane
+tmux split-window -h -t $SESSION_NAME  'command 1'
+# Name the Horizontal pane & Select it
+tmux select-pane -t 1 -T mongodb-logs
+# Split the pane 1 vertically
+tmux split-window -v -t $SESSION_NAME 'command 2'
+# Rename the pane
+tmux select-pane -t 2 -T emqx-logs
+# Select default pane
+tmux select-pane -t 0
+
+#2 new windows and their names
+tmux new-window -t $SESSION_NAME:1 -n console 'cd ~; bash -i'
+tmux new-window -t $SESSION_NAME:2 -n term 'cd ~; bash -i'
+
+tmux select-window -t $SESSION_NAME:0
+tmux -2 attach-session -t $SESSION_NAME
